@@ -1,14 +1,15 @@
 package com.practice.firstspringbootapp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class WeightCoach implements Coach{
-
+    @Autowired
     private MealService mealService;
 
-    public WeightCoach(MealService mealService) {
-        this.mealService = mealService;
+    public WeightCoach() {
+        System.out.println("default constructor called");
     }
 
     @Override

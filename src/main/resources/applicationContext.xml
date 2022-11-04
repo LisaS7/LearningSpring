@@ -16,6 +16,5 @@
     </bean>
     <bean id="myCoach"
           class="com.practice.firstspringbootapp.WeightCoach">
-        <constructor-arg ref="generalMealService" />
     </bean>
 </beans>
