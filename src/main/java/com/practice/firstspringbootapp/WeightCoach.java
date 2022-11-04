@@ -3,6 +3,8 @@ package com.practice.firstspringbootapp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 @Component
 public class WeightCoach implements Coach{
     @Autowired
@@ -18,7 +20,7 @@ public class WeightCoach implements Coach{
     }
 
     @Override
-    public String getMeal() {
+    public String getMeal() throws IOException {
         return mealService.getMeal();
     }
 }
