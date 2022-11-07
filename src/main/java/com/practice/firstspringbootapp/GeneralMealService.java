@@ -2,6 +2,7 @@ package com.practice.firstspringbootapp;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,9 +13,10 @@ import java.util.Random;
 @Component
 public class GeneralMealService implements MealService{
 
-    private List<String> mealList = new ArrayList<String>();
+    private final List<String> mealList = new ArrayList<>();
 
-    private void readFile() throws IOException {
+    @PostConstruct
+    private void postConstruct() throws IOException {
         BufferedReader bf = new BufferedReader(new FileReader("src/meals.txt"));
         String line = bf.readLine();
         while (line != null){
@@ -24,8 +26,7 @@ public class GeneralMealService implements MealService{
         bf.close();
     }
     @Override
-    public String getMeal() throws IOException {
-        readFile();
+    public String getMeal() {
         Random randomNumber = new Random();
         int index = randomNumber.nextInt(mealList.toArray().length);
         return mealList.get(index);

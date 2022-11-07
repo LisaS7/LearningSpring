@@ -1,7 +1,7 @@
 package com.practice.firstspringbootapp;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import java.io.IOException;
 public class FirstSpringbootAppApplication {
 
 	public static void main(String[] args) throws IOException {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		Coach theCoach = context.getBean("myCoach", Coach.class);
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		Coach theCoach = context.getBean("weightCoach", Coach.class);
 		System.out.println(theCoach.getExercise());
 		System.out.println(theCoach.getMeal());
 	}
